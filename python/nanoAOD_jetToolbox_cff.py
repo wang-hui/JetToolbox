@@ -10,42 +10,42 @@ from JMEAnalysis.JetToolbox.jetToolbox_cff import jetToolbox
 # This is the part the user should modify
 def setupCustomizedJetToolbox(process):
 
-    #### AK4 PUPPI jets
-
-    ak4btagdiscriminators = [
-            'pfDeepCSVJetTags:probb',
-            'pfDeepCSVJetTags:probbb',
-            'pfDeepCSVJetTags:probc',
-            'pfDeepCSVJetTags:probudsg',
-#            'pfDeepFlavourJetTags:probb',
-#            'pfDeepFlavourJetTags:probbb',
-#            'pfDeepFlavourJetTags:problepb',
-#            'pfDeepFlavourJetTags:probc',
-#            'pfDeepFlavourJetTags:probuds',
-#            'pfDeepFlavourJetTags:probg',
-    ]
-    ak4btaginfos = [ 'pfDeepCSVTagInfos' ] #'pfDeepFlavourTagInfos'
-
-    jetToolbox(process, 'ak4', 'dummyseq', 'noOutput',
-               dataTier='nanoAOD',
-               PUMethod='Puppi', JETCorrPayload='AK4PFPuppi',
-               #addQGTagger=True,
-               runOnMC=True,
-               Cut='pt > 15.0 && abs(eta) < 2.4',
-               bTagDiscriminators=ak4btagdiscriminators,
-               bTagInfos=ak4btaginfos,
-               verbosity=4
-               )
+#    #### AK4 PUPPI jets
+#
+#    ak4btagdiscriminators = [
+#            'pfDeepCSVJetTags:probb',
+#            'pfDeepCSVJetTags:probbb',
+#            'pfDeepCSVJetTags:probc',
+#            'pfDeepCSVJetTags:probudsg',
+##            'pfDeepFlavourJetTags:probb',
+##            'pfDeepFlavourJetTags:probbb',
+##            'pfDeepFlavourJetTags:problepb',
+##            'pfDeepFlavourJetTags:probc',
+##            'pfDeepFlavourJetTags:probuds',
+##            'pfDeepFlavourJetTags:probg',
+#    ]
+#    ak4btaginfos = [ 'pfDeepCSVTagInfos' ] #'pfDeepFlavourTagInfos'
+#
+#    jetToolbox(process, 'ak4', 'dummyseq', 'noOutput',
+#               dataTier='nanoAOD',
+#               PUMethod='Puppi', JETCorrPayload='AK4PFPuppi',
+#               #addQGTagger=True,
+#               runOnMC=True,
+#               Cut='pt > 15.0 && abs(eta) < 2.4',
+#               bTagDiscriminators=ak4btagdiscriminators,
+#               bTagInfos=ak4btaginfos,
+#               verbosity=4
+#               )
 
     #### AK8 PUPPI jets
     ak8btagdiscriminators = [
                         'pfBoostedDoubleSecondaryVertexAK8BJetTags',
-                        'pfMassIndependentDeepDoubleBvLJetTags:probQCD',
-                        'pfMassIndependentDeepDoubleBvLJetTags:probHbb',
-                        'pfMassIndependentDeepDoubleCvLJetTags:probQCD',
-                        'pfMassIndependentDeepDoubleCvLJetTags:probHcc',
-                        'pfMassIndependentDeepDoubleCvBJetTags:probHbb',
-                        'pfMassIndependentDeepDoubleCvBJetTags:probHcc',
+#                        'pfMassIndependentDeepDoubleBvLJetTags:probQCD',
+#                        'pfMassIndependentDeepDoubleBvLJetTags:probHbb',
+#                        'pfMassIndependentDeepDoubleCvLJetTags:probQCD',
+#                        'pfMassIndependentDeepDoubleCvLJetTags:probHcc',
+#                        'pfMassIndependentDeepDoubleCvBJetTags:probHbb',
+#                        'pfMassIndependentDeepDoubleCvBJetTags:probHcc',
 #                        "pfMassDecorrelatedDeepBoostedDiscriminatorsJetTags:bbvsLight",
 #                        "pfMassDecorrelatedDeepBoostedDiscriminatorsJetTags:ccvsLight",
 #                        "pfMassDecorrelatedDeepBoostedDiscriminatorsJetTags:TvsQCD",
@@ -54,7 +54,7 @@ def setupCustomizedJetToolbox(process):
 #                        "pfMassDecorrelatedDeepBoostedDiscriminatorsJetTags:ZHbbvsQCD"
             ]
 
-    jetToolbox(process, 'ak8', 'adummyseq', 'noOutput',
+    jetToolbox(process, 'ak10', 'adummyseq', 'noOutput',
                dataTier='nanoAOD',
                PUMethod='Puppi', JETCorrPayload='AK8PFPuppi',
                runOnMC=True,
@@ -66,6 +66,20 @@ def setupCustomizedJetToolbox(process):
                addNsub=True,
                addEnergyCorrFunc=True,
                )
+
+    jetToolbox(process, 'ak12', 'adummyseq', 'noOutput',
+               dataTier='nanoAOD',
+               PUMethod='Puppi', JETCorrPayload='AK8PFPuppi',
+               runOnMC=True,
+               Cut='pt > 170.0 && abs(eta) < 2.4',
+               bTagDiscriminators=ak8btagdiscriminators,
+               addSoftDrop=True,
+               addSoftDropSubjets=True,
+               addPruning=True,
+               addNsub=True,
+               addEnergyCorrFunc=True,
+               )
+
     return process
 
 # ---------------------------------------------------------
