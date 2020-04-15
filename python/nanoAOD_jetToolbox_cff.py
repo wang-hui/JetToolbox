@@ -54,7 +54,7 @@ def setupCustomizedJetToolbox(process):
 #                        "pfMassDecorrelatedDeepBoostedDiscriminatorsJetTags:ZHbbvsQCD"
             ]
 
-    jetToolbox(process, 'ak10', 'adummyseq', 'noOutput',
+    jetToolbox(process, 'ak8', 'adummyseq', 'noOutput',
                dataTier='nanoAOD',
                PUMethod='Puppi', JETCorrPayload='AK8PFPuppi',
                runOnMC=True,
@@ -67,11 +67,24 @@ def setupCustomizedJetToolbox(process):
                addEnergyCorrFunc=True,
                )
 
+    jetToolbox(process, 'ak10', 'adummyseq', 'noOutput',
+               dataTier='nanoAOD',
+               PUMethod='Puppi', JETCorrPayload='AK8PFPuppi',
+               runOnMC=True,
+               Cut='pt > 50.0 && abs(eta) < 2.4',
+               bTagDiscriminators=ak8btagdiscriminators,
+               addSoftDrop=True,
+               addSoftDropSubjets=True,
+               addPruning=True,
+               addNsub=True,
+               addEnergyCorrFunc=True,
+               )
+
     jetToolbox(process, 'ak12', 'adummyseq', 'noOutput',
                dataTier='nanoAOD',
                PUMethod='Puppi', JETCorrPayload='AK8PFPuppi',
                runOnMC=True,
-               Cut='pt > 170.0 && abs(eta) < 2.4',
+               Cut='pt > 50.0 && abs(eta) < 2.4',
                bTagDiscriminators=ak8btagdiscriminators,
                addSoftDrop=True,
                addSoftDropSubjets=True,
