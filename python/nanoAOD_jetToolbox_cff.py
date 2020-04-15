@@ -58,7 +58,7 @@ def setupCustomizedJetToolbox(process):
                dataTier='nanoAOD',
                PUMethod='Puppi', JETCorrPayload='AK8PFPuppi',
                runOnMC=True,
-               Cut='pt > 170.0 && abs(eta) < 2.4',
+               Cut='pt > 50.0 && abs(eta) < 2.4',
                bTagDiscriminators=ak8btagdiscriminators,
                addSoftDrop=True,
                addSoftDropSubjets=True,
